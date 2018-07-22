@@ -1,4 +1,11 @@
-language: bash
+# Use Dockerized infrastructure
+sudo: false
+
+# Use node_js environnement
+language: node_js
+node_js:
+  - "6"
+
 
 # Cache Gcloud SDK between commands
 cache:
@@ -15,7 +22,7 @@ env:
     - GOOGLE_APPLICATION_CREDENTIALS=~/gcloud-service-key.json
     - PROJECT_NAME=ruby-helloworld-210915
     - CLUSTER_NAME=ruby-helloworld-cluster
-    - CLOUDSDK_COMPUTE_ZONE=eu-west1-b
+    - CLOUDSDK_COMPUTE_ZONE=europe-west1-b
     - DOCKER_IMAGE_NAME=ruby-helloworld
     - KUBE_DEPLOYMENT_NAME=ruby-helloworld
     - KUBE_DEPLOYMENT_CONTAINER_NAME=ruby-helloworld

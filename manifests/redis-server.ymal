@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-server
+spec:
+  selector:
+    matchLabels:
+      app: redis-server
+  serviceName: redis-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-server
+    spec:
+      containers:
+        - name: redis-server
+          image: redis:3.2
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 6379
+              name: redis-server
+          readinessProbe:
+            exec:
+              command: ['redis-cli', 'info', 'server']
+

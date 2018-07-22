@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: ruby-helloworld
+  name: ruby-helloworld
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: ruby-helloworld
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: ruby-helloworld
+    spec:
+      containers:
+      - image: gcr.io/ruby-helloworld-210915/ruby-helloworld:latest
+        name: ruby-helloworld
+        env:
+        - name: REDIS_HOST
+          value: "redis-server"
+        - name: REDIS_PORT
+          value: "6379"
+        ports:
+        - containerPort: 4567
+          protocol: TCP

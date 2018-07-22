@@ -1,3 +1,4 @@
+language: bash
 
 # Cache Gcloud SDK between commands
 cache:

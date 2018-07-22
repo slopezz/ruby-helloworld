@@ -6,8 +6,7 @@ cd app
 
 docker build -t gcr.io/${PROJECT_NAME}/${DOCKER_IMAGE_NAME}:$TRAVIS_COMMIT .
 
-echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/gcloud-service-key.json
-gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+gcloud auth activate-service-account --key-file "${GOOGLE_APPLICATION_CREDENTIALS}"
 
 gcloud --quiet config set project $PROJECT_NAME
 gcloud --quiet config set container/cluster $CLUSTER_NAME

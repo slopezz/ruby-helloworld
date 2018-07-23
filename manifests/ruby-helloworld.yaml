@@ -27,3 +27,21 @@ spec:
         ports:
         - containerPort: 4567
           protocol: TCP
+        livenessProbe:
+          httpGet:
+              path: /
+              port: 4567
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+              path: /
+              port: 4567
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3

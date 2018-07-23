@@ -3,7 +3,7 @@
 The application is running on a Google Cloud Kubernetes Cluster. It consist on:
 
  * A K8s StatefulSet with a single redis instance (replicas = 1).
- * A K8s Deployment with a simple ruby application connection to a Redis server (redis.ping) usign ENV variables (replicas = 2).
+ * A K8s Deployment with a simple ruby application connectting to a Redis server (redis.ping) using ENV variables (replicas = 2).
 
 Ruby application dockerfile can be located at [app](app/)
 

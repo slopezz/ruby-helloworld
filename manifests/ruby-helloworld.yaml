@@ -19,6 +19,13 @@ spec:
       containers:
       - image: gcr.io/ruby-helloworld-210915/ruby-helloworld:latest
         name: ruby-helloworld
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
         env:
         - name: REDIS_HOST
           value: "redis-server"

@@ -24,7 +24,23 @@ spec:
           ports:
             - containerPort: 6379
               name: redis-server
-          readinessProbe:
+          livenessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
             exec:
-              command: ['redis-cli', 'info', 'server']
-
+              command:
+              - redis-cli
+              - ping
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 5
+            exec:
+              command:
+              - redis-cli
+              - ping

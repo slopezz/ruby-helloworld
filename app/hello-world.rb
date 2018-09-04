@@ -7,5 +7,5 @@ redis = Redis.new(:host => ENV["REDIS_HOST"] || "127.0.0.1" , :port => ENV["REDI
 
 get '/' do
   redis.ping
-  "Hello World Red Hat 3scale API Management!!"
+  "Hello World Red Hat 3scale API Management!!!"
 end
